@@ -18,7 +18,10 @@ fn main() -> std::io::Result<()> {
         println!("Day 3 failed");
     }
     println!("====== Day 4 ======");
-
+    let day4_result = day_four();
+    if day4_result.is_err() {
+        println!("Day 4 failed");
+    }
     Ok(())
 }
 
@@ -154,14 +157,11 @@ fn get_total(rps: RPS) -> i32 {
         } else if round_shape == RPSShape::SCISSORS {
             total += 3;
         }
-
-        println!("Round {}: Choice {:?} Outcome {:?} Curr Totatl {}", pos+1, round_shape, out, total)
     }
     return total;
 }
 
 fn determine_outcome(op_shape: RPSShape, u_shape: RPSShape) -> RPSRoundOutcome {
-    println!("Round Choices: op {:?} u {:?}", op_shape, u_shape);
     if op_shape == u_shape {
         return RPSRoundOutcome::DRAW;
     } else if (u_shape == RPSShape::ROCK && op_shape == RPSShape::SCISSORS) 
@@ -285,6 +285,28 @@ fn day_three() ->  std::io::Result<()> {
     }
 
     println!("Total sum priority: {}", total_priority);
+
+    Ok(())
+}
+
+fn day_four() -> std::io::Result<()> {
+    // .234.....  2-4
+    // .....678.  6-8
+    //
+    // .23......  2-3
+    // ...45....  4-5
+    //
+    // ....567..  5-7
+    // ......789  7-9
+    //
+    // .2345678.  2-8
+    // ..34567..  3-7
+    //
+    // .....6...  6-6
+    // ...456...  4-6
+    //
+    // .23456...  2-6
+    // ...45678.  4-8
 
     Ok(())
 }
